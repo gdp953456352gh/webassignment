@@ -1,0 +1,86 @@
+doctype html
+
+html(lang="en")
+head
+	title Visualization
+	script(src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js")
+	script(src="https://www.gstatic.com/charts/loader.js")
+	script(src="/js/main.js")
+	script(src="/js/lodash.js")
+	link(href='/css/individual.css', rel='stylesheet')
+	link(href='/css/w3.css', rel='stylesheet')
+	
+body.centered-wrapper
+	
+	
+	a(href='#' id='overviewLink') Overview
+	br
+	a(href='#' id='individualLink') Individual
+	br
+	<div class="loader"></div>
+	div.overview
+		p#mostRevisions
+		p#leastRevisions
+		p#lEditors
+		p#sEditors
+		p#lHistory
+		p#sHistory
+		p.reNumber #[strong Revision number distributions]
+			br
+			a(href='#' id='overallBarChart') Bar chart by year and by user type
+			br
+			a(href='#' id='overallPieChart') Pie chart by user type
+			div#overallChart
+	div.individual
+		input#myInput(
+			type = 'text'
+			onkeyup = 'keyWord()'
+			placeholder='Search article names ...'
+		)
+		<div class="span3">
+		<table id="myTable" class="w3-table-all w3-hoverable">
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Revision</th>
+			</tr>
+		</thead>
+		<tbody>									
+		</tbody>
+		</table>
+		</div>
+		<div class="userinfo">
+			p#articleTitle
+			p#totalRevisions
+			br
+			a(href='/' id='topFiveRegUsers' class='articleTab') The top 5 regular users
+			br
+			<table id="topFiveRegUsersTable" class="articleChart w3-table-all w3-hoverable">
+				<tbody>
+				</tbody>	
+			</table>
+			a(href='/' id='revDistributeByBu' class='articleTab') Bar chart of revision number distributed by year and by user type
+			br
+			<div id='revDistributeByBuTable' class='articleChart'></div>
+			a(href='/' id='revDistributePie' class='articleTab') Pie chart of revision number distribution based on user type
+			br
+			<div id='revDistributePieChart' class='articleChart'></div>
+			a(href='/' id='revDistribute' class='articleTab') Revision number distributed by year made by top 5 users
+			br
+			<div id="distributeChart" class="articleChart">
+				<div class="tab">
+					<button class="tablinks" onclick="openTab(event, 'user1')"></button>
+					<button class="tablinks" onclick="openTab(event, 'user2')" id="defaultOpen"></button>
+					<button class="tablinks" onclick="openTab(event, 'user3')"></button>
+					<button class="tablinks" onclick="openTab(event, 'user4')"></button>
+					<button class="tablinks" onclick="openTab(event, 'user5')"></button>
+				</div>
+				<div id="user1" class="tabcontent"></div>
+				<div id="user2" class="tabcontent"></div>
+				<div id="user3" class="tabcontent"></div>
+				<div id="user4" class="tabcontent"></div>
+				<div id="user5" class="tabcontent"></div>
+			</div>
+			a(href='/' id='lastChartTab' class='articleTab') Bar chart of revision number distributed by year made by top 5 users
+			<div id="lastBarChart" class="articleChart"></div>
+		</div>		
